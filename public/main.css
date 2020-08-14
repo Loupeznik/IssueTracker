@@ -1,0 +1,188 @@
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
+html {
+  background-color: #7EA2AA;
+}
+
+.uk-navbar-container:not(.uk-navbar-transparent) {
+  background: #303633;
+}
+
+.uk-navbar-container {
+  background: #303633;
+  color: #7EA2AA;
+}
+
+.uk-navbar-container .navbar-heading {
+  color: #7EA2AA;
+  font-weight: bold;
+  position: relative;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+}
+
+.uk-navbar-container .navbar-heading:hover {
+  color: #888DA7;
+}
+
+.uk-navbar-container .navbar-heading:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 25%;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #888DA7;
+  -webkit-transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.uk-navbar-container .navbar-heading:hover:after {
+  width: 80%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  left: 10%;
+}
+
+.uk-navbar-container .navbar-text a {
+  color: #7EA2AA;
+  font-weight: bold;
+  margin-right: 20px;
+  position: relative;
+  font-size: 1em;
+}
+
+.uk-navbar-container .navbar-text a:hover {
+  color: #888DA7;
+}
+
+.uk-navbar-container .navbar-text a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 25%;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #888DA7;
+  -webkit-transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.uk-navbar-container .navbar-text a:hover:after {
+  width: 80%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  left: 10%;
+}
+
+.container {
+  background-color: #7EA2AA;
+  padding: 1em;
+}
+
+.container .uk-card {
+  background-color: #888DA7;
+  color: #303633;
+}
+
+.container .uk-card h2 {
+  color: #303633;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container .uk-card h3 {
+  color: #303633;
+  font-weight: 600;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.container .uk-card .content {
+  display: inline;
+}
+
+.container .uk-card .content .left {
+  float: left;
+}
+
+.container .uk-card .content .right {
+  float: right;
+}
+
+.container .uk-card .content button {
+  border: 0px;
+  border-radius: 20px;
+  padding: .5em;
+  width: 150px;
+  font-size: 20px;
+  background-color: #303633;
+  color: #7EA2AA;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 20px;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+  margin-bottom: 1em;
+}
+
+.container .uk-card .content button:hover {
+  color: #888DA7;
+}
+
+.container .card-issue {
+  background-color: #7EA2AA;
+  margin-bottom: 1em;
+}
+
+.container .card-issue-w {
+  width: 100%;
+  max-width: 100vh;
+}
+
+.center-items {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+input, select {
+  padding: 1em;
+  width: 50%;
+  border: none;
+  margin-bottom: 1em;
+  background-color: #303633;
+  color: white;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+input:not(select):focus, select:not(select):focus {
+  background-color: #7EA2AA;
+}
+
+input[type='submit'], select[type='submit'] {
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+input[type='submit']:hover, select[type='submit']:hover {
+  background-color: #7EA2AA;
+}
+/*# sourceMappingURL=main.css.map */

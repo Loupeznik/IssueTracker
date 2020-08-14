@@ -1,0 +1,177 @@
+$nav-background: #303633; //nav background, main text
+$main-background: #7EA2AA; //main background, primary text
+$secondary-background: #888DA7;
+
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+html {
+    background-color: $main-background;
+}
+
+.uk-navbar-container:not(.uk-navbar-transparent) {
+    background: $nav-background;
+}
+
+.uk-navbar-container {
+    background: $nav-background ;
+    color: $main-background;
+
+    .navbar-heading {
+        color: $main-background;
+        font-weight: bold;
+        //display: inline-block;
+        position: relative;
+        transition: color .3s ease;
+
+        &:hover {
+            color: $secondary-background;
+        }
+        &:after {    
+            background: none repeat scroll 0 0 transparent;
+            bottom: 25%;
+            content: "";
+            display: block;
+            height: 2px;
+            left: 50%;
+            position: absolute;
+            background: $secondary-background;
+            transition: width 0.3s ease 0s, left 0.3s ease 0s;
+            width: 0;
+          }
+          &:hover:after { 
+            width: 80%; 
+            align-self: center;
+            left: 10%; 
+          }
+    }
+
+    .navbar-text a {
+            color: $main-background;
+            font-weight: bold;
+            margin-right: 20px;
+            position: relative;
+            font-size: 1em;
+
+            &:hover {
+                color: $secondary-background;
+            }
+            &:after {    
+                background: none repeat scroll 0 0 transparent;
+                bottom: 25%;
+                content: "";
+                display: block;
+                height: 2px;
+                left: 50%;
+                position: absolute;
+                background: $secondary-background;
+                transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                width: 0;
+              }
+              &:hover:after { 
+                width: 80%; 
+                align-self: center;
+                left: 10%; 
+              }
+    }
+}
+
+.container {
+    background-color: $main-background;
+    padding: 1em;
+
+    .uk-card {
+        background-color: $secondary-background;
+        color: $nav-background;
+        //height: 100%;
+
+        h2 {
+            color: $nav-background;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        h3 {
+            color: $nav-background;
+            font-weight: 600;
+            font-size: 1.2em;
+            text-align: left;
+        }
+
+        .content {
+            display: inline;
+    
+            .left {
+                float: left;
+            }
+    
+            .right {
+                float: right;
+            }
+    
+            button {
+                border: 0px;
+                border-radius: 20px;
+                padding: .5em;
+                width: 150px;
+                font-size: 20px;
+                background-color: $nav-background;
+                color: $main-background;
+                font-weight: bold;
+                cursor: pointer;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                line-height: 20px;
+                transition: color .3s ease;
+                margin-bottom: 1em;
+    
+                &:hover {
+                    color: $secondary-background;
+                }
+            }
+        }
+    }
+
+    .card-issue {
+        background-color: $main-background;
+    }
+
+    .card-issue-w {
+        width: 100%;
+        max-width: 100vh;
+    }
+
+}
+
+.center-items {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+input, select {
+    padding: 1em;
+    width: 50%;
+    border: none;
+    margin-bottom: 1em;
+    background-color: $nav-background;
+    color: white;
+    transition: all .3s ease;
+
+    &:not(select):focus {
+        background-color: $main-background;
+    }
+
+    &[type='submit'] {
+        font-weight: bold;
+        font-size: 1em;
+        text-transform: uppercase;
+
+        &:hover {
+            background-color: $main-background;
+        }
+    }
+
+}
