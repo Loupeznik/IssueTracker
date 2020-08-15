@@ -10,11 +10,10 @@ class IssueController extends Controller
 
     public function index()
     {
-        $issues = Issue::latest()->get();
+        $active = Issue::where('status_id', 1)->orderBy('priority_id', 'asc')->take(10)->get();
+        $resolved = Issue::where('status_id', 2)->orderBy('updated_at', 'asc')->take(10)->get();
 
-        //return $issues;
-        //return $issues->id;
-        return view('issue.issues', compact('issues'));
+        return view('issue.issues', compact(['active', 'resolved']));
     }
 
     public function create()
@@ -27,8 +26,6 @@ class IssueController extends Controller
         Issue::create($request->validate([
             'Name' => ['required', 'min:10', 'max:100'],
             'Desc' => ['required', 'min:30', 'max:1000'],
-            'Type' => 'required',
-            'Status' => 'required'
         ]));
 
         return redirect('/issues');
@@ -48,12 +45,27 @@ class IssueController extends Controller
     {
         $issue->update($request->validate([
             'Name' => ['required', 'min:10', 'max:100'],
-            'Desc' => ['required', 'min:30', 'max:1000']
+            'Desc' => ['required', 'min:30', 'max:1000'],
         ]));
     }
 
     public function destroy(Issue $issue)
     {
-        //
+        $issue->delete();
+
+        return redirect('/issues');
+    }
+
+    public function list() {
+
+    }
+
+    public function validateInput($request) {
+
+        return $request->validate([
+            'Name' => ['required', 'min:10', 'max:100'],
+            'Desc' => ['required', 'min:30', 'max:1000'] //doplnit
+        ]);
+
     }
 }
