@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/issues', 'IssuesController@store')->name('issues.store');
-Route::get('/issues/list', 'IssuesController@list');
+Route::post('/issues', 'IssueController@store');
+Route::get('/issues/list', 'IssueController@list');
 Route::resource('issues','IssueController');

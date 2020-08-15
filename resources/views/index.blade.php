@@ -17,8 +17,8 @@
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-            <li class="navbar-text"><a href="issues/list/">Issues</a></li>
-            <li class="navbar-text"><a href="issues/create/">New Issue</a></li>
+            <li class="navbar-text"><a href="/issues/list/">Issues</a></li>
+            <li class="navbar-text"><a href="/issues/create/">New Issue</a></li>
             <li class="navbar-text"><a href="/account">icon | Logged in as Guest</a></li>
         </ul>
 
