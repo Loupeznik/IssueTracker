@@ -1,5 +1,8 @@
 @extends('index')
 @section('title', 'New Issue')
+@section('head')
+<script src="https://cdn.tiny.cloud/1/cj2klcn0ztdew7ct1bbousfvoqr7ski6txwea32xh8qyyy9z/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+@endsection
 
 @section('content')
     <div class="uk-child-width-expand@s" uk-grid>
@@ -12,31 +15,41 @@
                         <label>Issue Name</label><br>
                         <input type="text" name="Name" value="{{old('Name')}}">
                         @error('Name')
-                        <p>{{$errors->first('Name')}}</p>
+                        <p class="text-warning">{{$errors->first('Name')}}</p>
                         @enderror
                     </div>
                     <div class="input-group">
                         <label>Issue Type</label><br>
                         <select name="Type">
-                            <option value="1">Backend</option>
-                            <option value="2">UI</option>
+                            @foreach($types as $type)
+                                <option value="{{$type->id}}">{{$type->Name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="input-group">
                         <label>Issue Priority</label><br>
-                        <select name="Status">
-                            <option value="1">High</option>
-                            <option value="2">Normal</option>
-                            <option value="3">Low</option>
+                        <select name="Priority">
+                            @foreach($priorities as $priority)
+                                <option value="{{$priority->id}}">{{$priority->Name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="input-group">
                         <label>Issue Description</label><br>
-                        <textarea name="Desc"></textarea>
+                        <textarea id="editor" name="Desc"></textarea>
                     </div>
-                    <input type="submit" name="submitForm" value="Create Issue">
+                    <input type="submit" name="submitForm" value="Create Issue" class="after-editor">
+                    
                 </form>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+<script>
+    tinymce.init({
+        selector: '#editor'
+    });
+</script>
 @endsection

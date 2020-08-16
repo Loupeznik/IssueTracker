@@ -6,47 +6,51 @@
         <div>
             <div class="uk-card uk-card-body">
                 <h2>Active Issues</h2>
-                @foreach ($active as $issue)
-                <div class="uk-card uk-card-body card-issue">
-                    <h3>{{$issue->Name}}</h3>
-                    <div class="content">
-                        <div class="left">
-                            <ul>
-                                <li>Priority: {{$issue->priority->Name}}</li>
-                                <li>Type: {{$issue->type->Name}}</li>
-                                <li>Created At: {{$issue->created_at}}</li>
-                                <li>Created by: {{$issue->user->name}}</li>
-                            </ul>
-                        </div>
-                        <div class="right">
-                            <a href="/issues/{{$issue->id}}"><button>Detail</button></a>
+                @forelse ($active as $issue)
+                    <div class="uk-card uk-card-body card-issue">
+                        <h3>{{$issue->Name}}</h3>
+                        <div class="content">
+                            <div class="left">
+                                <ul>
+                                    <li>Priority: {{$issue->priority->Name}}</li>
+                                    <li>Type: {{$issue->type->Name}}</li>
+                                    <li>Created At: {{$issue->created_at}}</li>
+                                    <li>Created by: {{$issue->user->name}}</li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <a href="/issues/{{$issue->id}}"><button>Detail</button></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                @endforeach
+                @empty
+                    <p class="text-warning">No active issues found</p>
+                @endforelse
             </div>
         </div>
         <div>
             <div class="uk-card uk-card-default uk-card-body">
                 <h2>Resolved Issues</h2>
-                @foreach ($resolved as $issue)
-                <div class="uk-card uk-card-body card-issue">
-                    <h3>{{$issue->Name}}</h3>
-                    <div class="content">
-                        <div class="left">
-                            <ul>
-                                <li>Priority: {{$issue->priority->Name}}</li>
-                                <li>Type: {{$issue->type->Name}}</li>
-                                <li>Created At: {{$issue->created_at}}</li>
-                                <li>Created by: {{$issue->user->name}}</li>
-                            </ul>
-                        </div>
-                        <div class="right">
-                            <a href="/issues/{{$issue->id}}"><button>Detail</button></a>
+                @forelse ($resolved as $issue)
+                    <div class="uk-card uk-card-body card-issue">
+                        <h3>{{$issue->Name}}</h3>
+                        <div class="content">
+                            <div class="left">
+                                <ul>
+                                    <li>Priority: {{$issue->priority->Name}}</li>
+                                    <li>Type: {{$issue->type->Name}}</li>
+                                    <li>Created At: {{$issue->created_at}}</li>
+                                    <li>Created by: {{$issue->user->name}}</li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <a href="/issues/{{$issue->id}}"><button>Detail</button></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                @endforeach
+                @empty
+                    <p class="text-warning">No resolved issues found</p>
+                @endforelse
             </div>
         </div>
         <div>

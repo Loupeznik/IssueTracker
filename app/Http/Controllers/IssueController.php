@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Issue;
+use App\Priority;
+use App\Type;
 use Illuminate\Http\Request;
 
 class IssueController extends Controller
@@ -18,7 +20,9 @@ class IssueController extends Controller
 
     public function create()
     {
-        return view('issue.create');
+        $types = Type::all();
+        $priorities = Priority::all();
+        return view('issue.create', compact(['types', 'priorities']));
     }
 
     public function store(Request $request)
@@ -26,7 +30,7 @@ class IssueController extends Controller
         Issue::create($request->validate([
             'Name' => ['required', 'min:10', 'max:100'],
             'Desc' => ['required', 'min:30', 'max:1000'],
-        ]));
+        ])); //integrate validateInput() function
 
         return redirect('/issues');
     }
@@ -38,7 +42,9 @@ class IssueController extends Controller
 
     public function edit(Issue $issue)
     {
-        return view('issue.update', compact('issue'));
+        $types = Type::all();
+        $priorities = Priority::all();
+        return view('issue.update', compact(['issue','types','priorities']));
     }
 
     public function update(Request $request, Issue $issue)
@@ -46,7 +52,7 @@ class IssueController extends Controller
         $issue->update($request->validate([
             'Name' => ['required', 'min:10', 'max:100'],
             'Desc' => ['required', 'min:30', 'max:1000'],
-        ]));
+        ])); //integrate validateInput() function
     }
 
     public function destroy(Issue $issue)
