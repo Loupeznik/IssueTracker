@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/resources/sass/*.css
 .env
 .env.backup
 .phpunit.result.cache
@@ -12,3 +13,4 @@ npm-debug.log
 yarn-error.log
 
 *.code-workspace
+*.css.map
