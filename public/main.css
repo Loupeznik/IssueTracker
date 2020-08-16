@@ -185,4 +185,14 @@ input[type='submit'], select[type='submit'] {
 input[type='submit']:hover, select[type='submit']:hover {
   background-color: #7EA2AA;
 }
+
+.text-warning {
+  color: #9E1638;
+  font-weight: bold;
+  text-align: center;
+}
+
+.after-editor {
+  margin-top: 1em;
+}
 /*# sourceMappingURL=main.css.map */

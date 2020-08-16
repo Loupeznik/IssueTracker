@@ -1,6 +1,7 @@
 $nav-background: #303633; //nav background, main text
 $main-background: #7EA2AA; //main background, primary text
 $secondary-background: #888DA7;
+$danger: #9E1638;
 
 * {
     font-family: 'Nunito', sans-serif;
@@ -136,6 +137,7 @@ html {
 
     .card-issue {
         background-color: $main-background;
+        margin-bottom: 1em;
     }
 
     .card-issue-w {
@@ -174,4 +176,14 @@ input, select {
         }
     }
 
+}
+
+.text-warning {
+    color: $danger;
+    font-weight: bold;
+    text-align: center;
+}
+
+.after-editor {
+    margin-top: 1em;
 }
