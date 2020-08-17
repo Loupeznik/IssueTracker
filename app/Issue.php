@@ -10,7 +10,7 @@ class Issue extends Model
 
     use SoftDeletes;
 
-    protected $fillable = ['Name','Desc'];
+    protected $fillable = ['Name','Desc','types_id','priority_id','status_id'];
     
     public function user() {
         return $this->belongsTo(User::class);

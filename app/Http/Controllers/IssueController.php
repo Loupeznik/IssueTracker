@@ -27,10 +27,7 @@ class IssueController extends Controller
 
     public function store(Request $request)
     {
-        Issue::create($request->validate([
-            'Name' => ['required', 'min:10', 'max:100'],
-            'Desc' => ['required', 'min:30', 'max:1000'],
-        ])); //integrate validateInput() function
+        Issue::create($this->validateInput($request));
 
         return redirect('/issues');
     }
@@ -49,10 +46,7 @@ class IssueController extends Controller
 
     public function update(Request $request, Issue $issue)
     {
-        $issue->update($request->validate([
-            'Name' => ['required', 'min:10', 'max:100'],
-            'Desc' => ['required', 'min:30', 'max:1000'],
-        ])); //integrate validateInput() function
+        $issue->update(($this->validateInput($request)));
     }
 
     public function destroy(Issue $issue)
@@ -63,14 +57,16 @@ class IssueController extends Controller
     }
 
     public function list() {
-
+        
     }
 
-    public function validateInput($request) {
+    public function validateInput($input) {
 
-        return $request->validate([
+        return $input->validate([
             'Name' => ['required', 'min:10', 'max:100'],
-            'Desc' => ['required', 'min:30', 'max:1000'] //doplnit
+            'Desc' => ['required', 'min:30', 'max:1000'],
+            'types_id' => 'required',
+            'priority_id' => 'required'
         ]);
 
     }

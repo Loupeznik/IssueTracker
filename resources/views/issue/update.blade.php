@@ -15,26 +15,38 @@
                     <div class="input-group">
                         <label>Issue Name</label><br>
                         <input type="text" name="name" value="{{$issue->Name}}">
+                        @error('Name')
+                            <p class="text-warning">{{$errors->first('Name')}}</p>
+                        @enderror
                     </div>
                     <div class="input-group">
                         <label>Issue Type</label><br>
-                        <select name="Type">
+                        <select name="types_id">
                         @foreach($types as $type)
                             <option value="{{$type->id}}">{{$type->Name}}</option>
                         @endforeach
                         </select>
+                        @error('types_id')
+                            <p class="text-warning">{{$errors->first('types_id')}}</p>
+                        @enderror
                     </div>
                     <div class="input-group">
                         <label>Issue Priority</label><br>
-                        <select name="Priority">
+                        <select name="priority_id">
                             @foreach($priorities as $priority)
                                 <option value="{{$priority->id}}">{{$priority->Name}}</option>
                             @endforeach
                         </select>
+                        @error('priority_id')
+                            <p class="text-warning">{{$errors->first('priority_id')}}</p>
+                        @enderror
                     </div>
                     <div class="input-group">
                         <label>Issue Description</label><br>
                         <textarea id="editor">{{$issue->Desc}}</textarea>
+                        @error('Desc')
+                            <p class="text-warning">{{$errors->first('Desc')}}</p>
+                        @enderror
                     </div>
                     <input type="submit" value="Edit Issue" class="after-editor">
                 </form>

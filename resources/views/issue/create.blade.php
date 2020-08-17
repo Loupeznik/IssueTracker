@@ -15,28 +15,37 @@
                         <label>Issue Name</label><br>
                         <input type="text" name="Name" value="{{old('Name')}}">
                         @error('Name')
-                        <p class="text-warning">{{$errors->first('Name')}}</p>
+                            <p class="text-warning">{{$errors->first('Name')}}</p>
                         @enderror
                     </div>
                     <div class="input-group">
                         <label>Issue Type</label><br>
-                        <select name="Type">
+                        <select name="types_id">
                             @foreach($types as $type)
-                                <option value="{{$type->id}}">{{$type->Name}}</option>
+                                <option value="{{$type->id}}" @if ($type->id == old('types_id')) selected @endif>{{$type->Name}}</option>
                             @endforeach
                         </select>
+                        @error('priority_id')
+                            <p class="text-warning">{{$errors->first('priority_id')}}</p>
+                        @enderror
                     </div>
                     <div class="input-group">
                         <label>Issue Priority</label><br>
-                        <select name="Priority">
+                        <select name="priority_id">
                             @foreach($priorities as $priority)
-                                <option value="{{$priority->id}}">{{$priority->Name}}</option>
+                                <option value="{{$priority->id}}"  @if ($priority->id == old('priority_id')) selected @endif>{{$priority->Name}}</option>
                             @endforeach
                         </select>
+                        @error('types_id')
+                            <p class="text-warning">{{$errors->first('types_id')}}</p>
+                        @enderror
                     </div>
                     <div class="input-group">
                         <label>Issue Description</label><br>
-                        <textarea id="editor" name="Desc"></textarea>
+                        <textarea id="editor" name="Desc">{{old('Desc')}}</textarea>
+                        @error('Desc')
+                            <p class="text-warning">{{$errors->first('Desc')}}</p>
+                        @enderror
                     </div>
                     <input type="submit" name="submitForm" value="Create Issue" class="after-editor">
                     
