@@ -14,7 +14,7 @@
                     @method('PUT')
                     <div class="input-group">
                         <label>Issue Name</label><br>
-                        <input type="text" name="name" value="{{$issue->Name}}">
+                        <input type="text" name="Name" value="{{$issue->Name}}">
                         @error('Name')
                             <p class="text-warning">{{$errors->first('Name')}}</p>
                         @enderror
@@ -43,7 +43,7 @@
                     </div>
                     <div class="input-group">
                         <label>Issue Description</label><br>
-                        <textarea id="editor">{{$issue->Desc}}</textarea>
+                        <textarea id="editor" name="Desc">{{$issue->Desc}}</textarea>
                         @error('Desc')
                             <p class="text-warning">{{$errors->first('Desc')}}</p>
                         @enderror

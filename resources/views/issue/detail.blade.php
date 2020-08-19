@@ -20,7 +20,7 @@
                         </p>
                         <div class="card-issue-w">
                             <h3>Issue Description</h3>
-                            <p>{{$issue->Desc}}</p>
+                            <p> {!! $issue->Desc !!} </p>
                         </div>
 
                     </div>
