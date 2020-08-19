@@ -27,7 +27,15 @@ class IssueController extends Controller
 
     public function store(Request $request)
     {
-        Issue::create($this->validateInput($request));
+        $this->validateInput($request);
+
+        Issue::create([
+            'Name' => $request->Name,
+            'user_id' => $request->user_id,
+            'types_id' => $request->types_id,
+            'priority_id' => $request->priority_id,
+            'Desc' => $request->Desc
+        ]);
 
         return redirect('/issues');
     }
@@ -41,12 +49,15 @@ class IssueController extends Controller
     {
         $types = Type::all();
         $priorities = Priority::all();
+
         return view('issue.update', compact(['issue','types','priorities']));
     }
 
     public function update(Request $request, Issue $issue)
     {
-        $issue->update(($this->validateInput($request)));
+        $issue->update($this->validateInput($request));
+
+        return redirect('/issues');
     }
 
     public function destroy(Issue $issue)
@@ -56,18 +67,28 @@ class IssueController extends Controller
         return redirect('/issues');
     }
 
-    public function list() {
-        
+    public function list() 
+    {
+        $issues = Issue::where('status_id', 1)->orderBy('priority_id', 'asc')->orderBy('updated_at', 'desc')->get();
+
+        return view('issue.list', compact('issues'));
     }
 
-    public function validateInput($input) {
-
+    public function validateInput($input) 
+    {
         return $input->validate([
             'Name' => ['required', 'min:10', 'max:100'],
             'Desc' => ['required', 'min:30', 'max:1000'],
             'types_id' => 'required',
             'priority_id' => 'required'
         ]);
-
     }
+
+    public function resolve(Issue $issue)
+    {
+        $issue->update(['status_id' => 2]);
+
+        return redirect('/issues');
+    }
+
 }
