@@ -11,6 +11,7 @@
                 <h2>New Issue</h2>
                 <form method="POST" action="/issues">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="input-group">
                         <label>Issue Name</label><br>
                         <input type="text" name="Name" value="{{old('Name')}}">
@@ -48,7 +49,6 @@
                         @enderror
                     </div>
                     <input type="submit" name="submitForm" value="Create Issue" class="after-editor">
-                    
                 </form>
             </div>
         </div>

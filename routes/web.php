@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::user()) {
+        return redirect('/issues');
+    }
+    return redirect('/login');
 });
 
 Route::post('/issues', 'IssueController@store');
 Route::get('/issues/list', 'IssueController@list');
+Route::get('/issues/{issue}/resolve', 'IssueController@resolve');
 Route::resource('issues','IssueController');
+//Route::get('/account', 'AccountController@index')->middleware('auth'); //WIP
+
+Auth::routes(['register' => false]);

@@ -53,10 +53,12 @@
                 @endforelse
             </div>
         </div>
+        @auth
         <div>
             <div class="uk-card uk-card-default uk-card-body">
                 <h2>My Assigned Issues</h2>
             </div>
         </div>
+        @endauth
     </div>
 @endsection

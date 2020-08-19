@@ -4,6 +4,8 @@
 /storage/*.key
 /vendor
 /resources/sass/*.css
+/auth_generated_helpers/
+
 .env
 .env.backup
 .phpunit.result.cache
