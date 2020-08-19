@@ -195,4 +195,22 @@ input[type='submit']:hover, select[type='submit']:hover {
 .after-editor {
   margin-top: 1em;
 }
+
+button {
+  padding: 1em;
+  width: 50%;
+  border: none;
+  margin-bottom: 1em;
+  background-color: #303633;
+  color: white;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #7EA2AA;
+}
 /*# sourceMappingURL=main.css.map */

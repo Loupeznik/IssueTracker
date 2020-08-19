@@ -187,3 +187,20 @@ input, select {
 .after-editor {
     margin-top: 1em;
 }
+
+button {
+    padding: 1em;
+    width: 50%;
+    border: none;
+    margin-bottom: 1em;
+    background-color: $nav-background;
+    color: white;
+    transition: all .3s ease;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+
+    &:hover {
+            background-color: $main-background;
+    }
+}
