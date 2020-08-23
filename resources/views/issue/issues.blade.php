@@ -57,6 +57,26 @@
         <div>
             <div class="uk-card uk-card-default uk-card-body">
                 <h2>My Assigned Issues</h2>
+                @forelse ($userIssues as $issue)
+                    <div class="uk-card uk-card-body card-issue">
+                        <h3>{{$issue->Name}}</h3>
+                        <div class="content">
+                            <div class="left">
+                                <ul>
+                                    <li>Priority: {{$issue->priority->Name}}</li>
+                                    <li>Type: {{$issue->type->Name}}</li>
+                                    <li>Status: {{$issue->status->Name}}</li>
+                                    <li>Created At: {{$issue->created_at}}</li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <a href="/issues/{{$issue->id}}"><button>Detail</button></a>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-warning">This user has not been assigned any issue</p>
+                @endforelse
             </div>
         </div>
         @endauth

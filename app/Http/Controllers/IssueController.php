@@ -5,17 +5,24 @@ namespace App\Http\Controllers;
 use App\Issue;
 use App\Priority;
 use App\Type;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IssueController extends Controller
 {
 
     public function index()
     {
-        $active = Issue::where('status_id', 1)->orderBy('priority_id', 'asc')->take(10)->get();
+        $active = Issue::where('status_id', 1)->orderBy('priority_id', 'asc')->orderBy('created_at', 'desc')->take(10)->get();
         $resolved = Issue::where('status_id', 2)->orderBy('updated_at', 'asc')->take(10)->get();
-
+        if (Auth::user()) {
+            $userIssues = $this->userIssue(Auth::user());
+            return view('issue.issues', compact(['active', 'resolved','userIssues']));
+        }
+        
         return view('issue.issues', compact(['active', 'resolved']));
+        
     }
 
     public function create()
@@ -89,6 +96,10 @@ class IssueController extends Controller
         $issue->update(['status_id' => 2]);
 
         return redirect('/issues');
+    }
+
+    public function userIssue(User $user) {
+        return Issue::where('status_id', 1)->where('user_id', $user->id)->get();
     }
 
 }
