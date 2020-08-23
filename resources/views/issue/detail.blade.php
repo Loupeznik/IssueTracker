@@ -22,8 +22,8 @@
                             <h3>Issue Description</h3>
                             <p> {!! $issue->Desc !!} </p>
                         </div>
-
                     </div>
+                    @auth
                     <div class="right">
                         <a href="/issues/{{$issue->id}}/edit"><button>Modify</button></a><br>
                         <a href="/issues/{{$issue->id}}/resolve"><button>Resolve</button></a><br>
@@ -33,6 +33,7 @@
                             <input type="submit" class="button" value="remove"><br>
                         </form>
                     </div>
+                    @endauth
                 </div>
             </div>
         </div>
