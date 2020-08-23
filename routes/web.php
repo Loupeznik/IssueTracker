@@ -25,6 +25,6 @@ Route::post('/issues', 'IssueController@store');
 Route::get('/issues/list', 'IssueController@list');
 Route::get('/issues/{issue}/resolve', 'IssueController@resolve');
 Route::resource('issues','IssueController');
-//Route::get('/account', 'AccountController@index')->middleware('auth'); //WIP
+Route::get('/account', 'AccountController@index');
 
 Auth::routes(['register' => false]);
