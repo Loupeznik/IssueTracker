@@ -38,5 +38,9 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    //přidat autentifikaci skrz username (přidat uname do migrace, pak fresh migrovat šecko), link v bookmarks
+    public function username()
+    {
+        return 'username';
+    }
+
 }

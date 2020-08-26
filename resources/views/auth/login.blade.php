@@ -9,8 +9,8 @@
                     @csrf
                     <div class="input-group">
                         <label>Username</label><br>
-                        <input type="text" name="email" value="{{ old('email') }}">
-                        @error('email')
+                        <input type="text" name="username" value="{{ old('username') }}">
+                        @error('username')
                         <p class="text-warning">{{ $message }}</p>
                         @enderror
                     </div>
