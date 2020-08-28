@@ -26,5 +26,7 @@ Route::get('/issues/list', 'IssueController@list');
 Route::get('/issues/{issue}/resolve', 'IssueController@resolve');
 Route::resource('issues','IssueController');
 Route::get('/account', 'AccountController@index');
+Route::get('/account/edit', 'AccountController@edit');
+Route::put('/account/edit', 'AccountController@update');
 
 Auth::routes(['register' => false]);

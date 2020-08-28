@@ -9,7 +9,7 @@ Issue tracker application made with Laravel
 ## Features
 - CRUD interface for issues
 - Custom styled UI
-- User registration and login (WIP)
+- User login
 - Administration (WIP)
 
 ## Disclaimer
