@@ -83,6 +83,10 @@ html {
   left: 10%;
 }
 
+.uk-navbar-container i {
+  margin-right: .5em;
+}
+
 .container {
   background-color: #7EA2AA;
   padding: 1em;
@@ -151,6 +155,14 @@ html {
   max-width: 100vh;
 }
 
+.container .account-detail {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  line-height: 2em;
+}
+
 .center-items {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -180,6 +192,7 @@ input[type='submit'], select[type='submit'] {
   font-weight: bold;
   font-size: 1em;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 input[type='submit']:hover, select[type='submit']:hover {
@@ -208,6 +221,7 @@ button {
   font-weight: bold;
   font-size: 1em;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 button:hover {
