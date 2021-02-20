@@ -6,20 +6,32 @@ use Illuminate\Support\Facades\DB;
 class IssueSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the database with template issue categories
      *
      * @return void
      */
     public function run()
     {
-        DB::table('types')->insert([
-            'Name' => [1 => 'UI', 2 => 'Database', 3 => 'Codebase', 4 => 'Bug', 5 => 'Hardware']
-        ]);
-        DB::table('statuses')->insert([
-            'Name' => [1 => 'Active', 2 => 'Resolved']
-        ]);
-        DB::table('priorities')->insert([
-            'Name' => [1 => 'High', 2 => 'Medium', 3 => 'Low']
-        ]);
+        $types = ['UI', 'Database', 'Codebase', 'Bug', 'Hardware'];
+        $statuses = ['Active', 'Resolved'];
+        $priorities = ['High', 'Medium', 'Low'];
+        for ($i = 0; $i < count($types); $i++)
+        {
+            DB::table('types')->insert([
+                'Name' => $types[$i]
+            ]);
+        }
+        for ($i = 0; $i < count($statuses); $i++)
+        {
+            DB::table('statuses')->insert([
+                'Name' => $statuses[$i]
+            ]);
+        }
+        for ($i = 0; $i < count($priorities); $i++)
+        {
+            DB::table('priorities')->insert([
+                'Name' => $priorities[$i]
+            ]);
+        }
     }
 }
