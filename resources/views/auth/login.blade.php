@@ -16,7 +16,7 @@
                     </div>
                     <div class="input-group">
                         <label>Password</label><br>
-                        <input type="password" name="password" value="{{ old('password') }}">
+                        <input type="password" name="password">
                         @error('password')
                         <p class="text-warning">{{ $message }}</p>
                         @enderror
