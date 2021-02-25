@@ -8,9 +8,15 @@ use App\Type;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Config;
 
 class IssueController extends Controller
 {
+
+    public function __construct()
+    {
+        if (!Config::get('app.public')) $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -27,22 +33,30 @@ class IssueController extends Controller
 
     public function create()
     {
-        $types = Type::all();
-        $priorities = Priority::all();
-        return view('issue.create', compact(['types', 'priorities']));
+        if ($this->isAuthenticated()) 
+        {
+
+            $types = Type::all();
+            $priorities = Priority::all();
+            return view('issue.create', compact(['types', 'priorities']));
+        }
+        return redirect('/issues');
     }
 
     public function store(Request $request)
     {
-        $this->validateInput($request);
+        if ($this->isAuthenticated()) 
+        {
+            $this->validateInput($request);
 
-        Issue::create([
-            'Name' => $request->Name,
-            'user_id' => $request->user_id,
-            'types_id' => $request->types_id,
-            'priority_id' => $request->priority_id,
-            'Desc' => $request->Desc
-        ]);
+            Issue::create([
+                'Name' => $request->Name,
+                'user_id' => $request->user_id,
+                'types_id' => $request->types_id,
+                'priority_id' => $request->priority_id,
+                'Desc' => $request->Desc
+            ]);
+        }
 
         return redirect('/issues');
     }
@@ -54,22 +68,27 @@ class IssueController extends Controller
 
     public function edit(Issue $issue)
     {
-        $types = Type::all();
-        $priorities = Priority::all();
+        if ($this->isAuthenticated())
+        {
+            $types = Type::all();
+            $priorities = Priority::all();
+    
+            return view('issue.update', compact(['issue','types','priorities']));
+        }
+        return redirect('/issues');
 
-        return view('issue.update', compact(['issue','types','priorities']));
     }
 
     public function update(Request $request, Issue $issue)
     {
-        $issue->update($this->validateInput($request));
+        if ($this->isAuthenticated()) $issue->update($this->validateInput($request));
 
         return redirect('/issues');
     }
 
     public function destroy(Issue $issue)
     {
-        $issue->delete();
+        if ($this->isAuthenticated()) $issue->delete();
 
         return redirect('/issues');
     }
@@ -93,13 +112,20 @@ class IssueController extends Controller
 
     public function resolve(Issue $issue)
     {
-        $issue->update(['status_id' => 2]);
-
+        if ($this->isAuthenticated()) $issue->update(['status_id' => 2]);
+        
         return redirect('/issues');
     }
 
-    public function userIssue(User $user) {
+    public function userIssue(User $user) 
+    {
         return Issue::where('status_id', 1)->where('user_id', $user->id)->get();
+    }
+
+    public function isAuthenticated()
+    {
+        if (Auth::check()) return true;
+        return false;
     }
 
 }
