@@ -26,7 +26,7 @@ class CreateIssuesTable extends Migration
             $table->foreign('types_id')->references('id')->on('types');
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->foreign('priority_id')->references('id')->on('priorities');
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
