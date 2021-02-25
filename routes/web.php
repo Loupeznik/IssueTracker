@@ -22,9 +22,9 @@ Route::get('/', function () {
 });
 
 //Route::middleware(['auth'])->post('/issues', 'IssueController@store');
-Route::middleware(['auth'])->get('/issues/list', 'IssueController@list'); //remove middleware if issue list is intended to be publicly visible
-Route::middleware(['auth'])->get('/issues/{issue}/resolve', 'IssueController@resolve');
-Route::middleware(['auth'])->resource('issues','IssueController');  //remove middleware if issues are intended to be publicly visible
+Route::get('/issues/list', 'IssueController@list');
+Route::get('/issues/{issue}/resolve', 'IssueController@resolve');
+Route::resource('issues','IssueController');
 Route::get('/account', 'AccountController@index');
 Route::get('/account/edit', 'AccountController@edit');
 Route::put('/account/edit', 'AccountController@update');

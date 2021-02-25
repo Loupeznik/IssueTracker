@@ -23,7 +23,9 @@
                     </div>
                     <input type="submit" name="submitForm" value="Login">
                 </form>
-                <a href="/issues/"><button>Continue as guest</button></a>
+                @if (\Config::get('app.public'))
+                    <a href="/issues/"><button>Continue as guest</button></a>
+                @endif
             </div>
         </div>
     </div>

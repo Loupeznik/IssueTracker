@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Prague',
 
     /*
     |--------------------------------------------------------------------------
@@ -122,6 +122,19 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Public Status
+    |--------------------------------------------------------------------------
+    |
+    | This is used to determine whether the issues are publicly available
+    | or restricted to only to registered users. THe issues are public by 
+    | default, this setting can be changed in .env file.
+    |
+    */
+
+    'public' => (bool) env('APP_PUBLIC', true),
 
     /*
     |--------------------------------------------------------------------------
