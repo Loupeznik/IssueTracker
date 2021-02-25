@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class IssueSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Seed the database with template issue categories
@@ -12,6 +12,6 @@ class IssueSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Issue::class, 20)->create()->make();
+        factory(App\User::class, 10)->create()->make();
     }
 }
