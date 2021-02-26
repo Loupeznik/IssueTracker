@@ -6,12 +6,32 @@
             <div class="uk-card uk-card-body">
                 <h2>Account Details</h2>
                 <div class="account-detail">
-                    <i class="fas fa-user" title="Name and Username"></i> {{$user->name}} | {{$user->username}} <br>
-                    <i class="fas fa-envelope" title="Email"></i> {{$user->email}} <br>
-                    <i class="fas fa-user-plus" title="Registration date"></i> {{$user->created_at}} <br>
-                    @if ($user->admin == 1)
-                    <i class="fas fa-user-shield" title="Privileges"></i> Administrator Privileges <br>
-                    @endif
+                    <div class="table-div">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Registered</th>
+                                    <th>Admin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->username}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->created_at}}</td>
+                                <td>
+                                    @if ($user->admin == 1)
+                                        <i class="ri-check-fill"></i> 
+                                    @else
+                                        <i class="ri-close-line"></i>
+                                    @endif
+                                </td>
+                            </tbody>
+                        </table>
+                    </div>
                     <a href="/account/edit"><button>Edit Profile</button></a>
                 </div>
             </div>
