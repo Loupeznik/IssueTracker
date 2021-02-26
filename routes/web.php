@@ -21,12 +21,14 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-//Route::middleware(['auth'])->post('/issues', 'IssueController@store');
 Route::get('/issues/list', 'IssueController@list');
 Route::get('/issues/{issue}/resolve', 'IssueController@resolve');
 Route::resource('issues','IssueController');
 Route::get('/account', 'AccountController@index');
 Route::get('/account/edit', 'AccountController@edit');
 Route::put('/account/edit', 'AccountController@update');
+Route::resource('/admin/category/priority', 'PriorityController')->except(['show', 'update']);
+Route::resource('/admin/category/status', 'StatusController')->except(['show', 'update']);
+Route::resource('/admin/category/type', 'TypeController')->except(['show', 'update']);
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false]); //allow registration if APP_PUBLIC=TRUE
