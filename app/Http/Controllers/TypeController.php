@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Type;
 
 class TypeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::withCount('issue')->get();
+
+        return view('admin.types.list', compact('types'));
     }
 
     /**
@@ -23,7 +32,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.new');
     }
 
     /**
@@ -34,41 +43,11 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Type::create($request->validate([
+            'Name' => 'required|min:3|max:15',
+        ]));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return $this->redirectToList();
     }
 
     /**
@@ -79,6 +58,13 @@ class TypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Type::destroy($id); //doesn't destroy linked issues with it -> TO FIX
+
+        return $this->redirectToList();
+    }
+
+    private function redirectToList()
+    {
+        return redirect('/admin/category/types/');
     }
 }
