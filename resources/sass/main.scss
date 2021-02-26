@@ -15,6 +15,10 @@ html {
     background: $nav-background;
 }
 
+.text-danger {
+    color: $danger;
+}
+
 .uk-navbar-container {
     background: $nav-background ;
     color: $main-background;
@@ -216,5 +220,26 @@ button {
 
     &:hover {
             background-color: $main-background;
+    }
+}
+
+.table-div {
+    text-align: center;
+
+    table {
+        width: 100%;
+
+        thead {
+            border: 2px solid $main-background;
+            background-color: $nav-background;
+            th {
+                font-weight: bold;
+                color: $main-background;
+            }
+        }
+
+        tbody, tr {
+            border-bottom: 2px solid $nav-background;
+        }
     }
 }

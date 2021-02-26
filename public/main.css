@@ -10,6 +10,10 @@ html {
   background: #303633;
 }
 
+.text-danger {
+  color: #9E1638;
+}
+
 .uk-navbar-container {
   background: #303633;
   color: #7EA2AA;
@@ -226,5 +230,27 @@ button {
 
 button:hover {
   background-color: #7EA2AA;
+}
+
+.table-div {
+  text-align: center;
+}
+
+.table-div table {
+  width: 100%;
+}
+
+.table-div table thead {
+  border: 2px solid #7EA2AA;
+  background-color: #303633;
+}
+
+.table-div table thead th {
+  font-weight: bold;
+  color: #7EA2AA;
+}
+
+.table-div table tbody, .table-div table tr {
+  border-bottom: 2px solid #303633;
 }
 /*# sourceMappingURL=main.css.map */
