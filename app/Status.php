@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     public function issue() {
-        return $this->belongsToMany(Issue::class, 'status_id', 'id');
+        return $this->belongsTo(Issue::class, 'id', 'status_id');
     }
 }
