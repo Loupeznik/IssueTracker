@@ -17,10 +17,7 @@
                     </div>
                     <div class="input-group">
                         <label>Username</label><br>
-                        <input type="text" name="username" value="{{$user->username}}">
-                        @error('username')
-                            <p class="text-warning">{{$errors->first('username')}}</p>
-                        @enderror
+                        <input type="text" value="{{$user->username}}" uk-tooltip="title: Username cannot be changed; pos: bottom-left" disabled>
                     </div>
                     <div class="input-group">
                         <label>Email</label><br>

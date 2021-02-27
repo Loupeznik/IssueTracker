@@ -10,6 +10,10 @@ html {
   background: #303633;
 }
 
+.text-danger {
+  color: #9E1638;
+}
+
 .uk-navbar-container {
   background: #303633;
   color: #7EA2AA;
@@ -226,5 +230,47 @@ button {
 
 button:hover {
   background-color: #7EA2AA;
+}
+
+.table-div {
+  text-align: center;
+}
+
+.table-div table {
+  width: 100%;
+}
+
+.table-div table thead {
+  border: 2px solid #7EA2AA;
+  background-color: #303633;
+}
+
+.table-div table thead th {
+  font-weight: bold;
+  color: #7EA2AA;
+}
+
+.action-card {
+  background-color: #303633 !important;
+  color: white !important;
+  text-align: center;
+}
+
+.action-card h3 {
+  color: #7EA2AA !important;
+  text-align: center !important;
+  text-transform: uppercase;
+}
+
+.action-card a {
+  font-size: 2em;
+  text-decoration: none;
+  color: #7EA2AA;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+}
+
+.action-card a:hover {
+  color: #888DA7;
 }
 /*# sourceMappingURL=main.css.map */

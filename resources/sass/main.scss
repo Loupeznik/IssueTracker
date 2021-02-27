@@ -15,6 +15,10 @@ html {
     background: $nav-background;
 }
 
+.text-danger {
+    color: $danger;
+}
+
 .uk-navbar-container {
     background: $nav-background ;
     color: $main-background;
@@ -216,5 +220,45 @@ button {
 
     &:hover {
             background-color: $main-background;
+    }
+}
+
+.table-div {
+    text-align: center;
+
+    table {
+        width: 100%;
+
+        thead {
+            border: 2px solid $main-background;
+            background-color: $nav-background;
+            th {
+                font-weight: bold;
+                color: $main-background;
+            }
+        }
+    }
+}
+
+.action-card {
+    background-color: $nav-background !important;
+    color: white !important;
+    text-align: center;
+    
+    h3 {
+        color: $main-background !important;
+        text-align: center !important;
+        text-transform: uppercase;
+    }
+
+    a {
+        font-size: 2em;
+        text-decoration: none;
+        color: $main-background;
+        transition: color .3s ease;
+        
+        &:hover {
+            color: $secondary-background;
+        }
     }
 }

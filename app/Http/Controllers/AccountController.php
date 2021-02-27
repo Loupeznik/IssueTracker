@@ -18,8 +18,6 @@ class AccountController extends Controller
     public function index() 
     {
         $user = $this->getUser();
-        //$issueController = new IssueController;
-        //$issues = $issueController->userIssue($this->getUser()); //only for active issues
         $issues = $this->allUserIssues($user);
 
         return view('account.dashboard', compact('user','issues'));
@@ -35,11 +33,8 @@ class AccountController extends Controller
     public function update(Request $request) 
     {
 
-        $user = $this->getUser();
-
-        $user->update($request->validate([ //intellisense is going ham on the update() method, but it works
+        $request->user()->update($request->validate([
             'name' => 'required',
-            'username' => 'required',
             'email' => 'required'
         ]));
 
