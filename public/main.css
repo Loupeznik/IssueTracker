@@ -250,7 +250,27 @@ button:hover {
   color: #7EA2AA;
 }
 
-.table-div table tbody, .table-div table tr {
-  border-bottom: 2px solid #303633;
+.action-card {
+  background-color: #303633 !important;
+  color: white !important;
+  text-align: center;
+}
+
+.action-card h3 {
+  color: #7EA2AA !important;
+  text-align: center !important;
+  text-transform: uppercase;
+}
+
+.action-card a {
+  font-size: 2em;
+  text-decoration: none;
+  color: #7EA2AA;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+}
+
+.action-card a:hover {
+  color: #888DA7;
 }
 /*# sourceMappingURL=main.css.map */

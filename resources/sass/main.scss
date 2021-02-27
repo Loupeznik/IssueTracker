@@ -237,9 +237,28 @@ button {
                 color: $main-background;
             }
         }
+    }
+}
 
-        tbody, tr {
-            border-bottom: 2px solid $nav-background;
+.action-card {
+    background-color: $nav-background !important;
+    color: white !important;
+    text-align: center;
+    
+    h3 {
+        color: $main-background !important;
+        text-align: center !important;
+        text-transform: uppercase;
+    }
+
+    a {
+        font-size: 2em;
+        text-decoration: none;
+        color: $main-background;
+        transition: color .3s ease;
+        
+        &:hover {
+            color: $secondary-background;
         }
     }
 }
