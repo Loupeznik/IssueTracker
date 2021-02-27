@@ -4,35 +4,60 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Issue;
-use App\Type;
-use App\Status;
-use APp\Priority;
 
 class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'isAdmin']);
+        $this->middleware(['auth', 'admin']);
     }
 
     public function userList()
     {
-        $users = User::all();
+        $users = User::withCount('issues')->get();
 
-        return view('admin.users', compact($users));
+        return view('admin.users.list', compact('users'));
     }
 
-    public function removeUser(User $user)
+    public function removeUser($id)
     {
-        $user->delete();
+        User::where('id', $id)->delete();
 
-        return redirect('/admin/users');
+        return redirect('/admin/user');
+    }
+
+    public function addUserForm()
+    {
+        return view('admin.users.new');
     }
 
     public function addUser(Request $request)
     {
-        //create new user from request data
+        User::create($request->validate([
+            'username' => 'required|min:3|max:20|unique:users',
+            'name' => 'nullable|min:5|max:255',
+            'password' => 'required|min:8',
+            'email' => 'required|unique:users|email',
+            'admin' => 'required'
+        ]));
+
+        return redirect('/admin/user');
+    }
+
+    public function editUserForm($id)
+    {
+        $user = User::where('id', $id)->first();
+
+        return view('admin.users.edit', compact('user'));
+    }
+
+    public function editUser($id, Request $request)
+    {
+        User::where('id', $id)->update($request->validate([
+            'admin' => 'required'
+        ]));
+
+        return redirect('/admin/user');
     }
 
 }
