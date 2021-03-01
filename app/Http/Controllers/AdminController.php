@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class AdminController extends Controller
@@ -33,13 +34,16 @@ class AdminController extends Controller
 
     public function addUser(Request $request)
     {
-        User::create($request->validate([
-            'username' => 'required|min:3|max:20|unique:users',
-            'name' => 'nullable|min:5|max:255',
-            'password' => 'required|min:8',
-            'email' => 'required|unique:users|email',
-            'admin' => 'required'
-        ]));
+
+        $this->validateInput($request);
+
+        User::create([
+            'username' => $request->username,
+            'name' => $request->name,
+            'password' => Hash::make($request->password),
+            'email' => $request->email,
+            'admin' => $request->admin
+        ]);
 
         return redirect('/admin/user');
     }
@@ -58,6 +62,18 @@ class AdminController extends Controller
         ]));
 
         return redirect('/admin/user');
+    }
+
+    
+    public function validateInput($input) 
+    {
+        return $input->validate([
+            'username' => 'required|min:3|max:20|unique:users',
+            'name' => 'nullable|min:5|max:255',
+            'password' => 'required|min:8',
+            'email' => 'required|unique:users|email',
+            'admin' => 'required'
+        ]);
     }
 
 }
