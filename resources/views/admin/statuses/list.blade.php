@@ -18,24 +18,30 @@
                         </thead>
                         <tbody>
                             @forelse ($statuses as $status)
+                                <tr>
+                                    <td>{{$status->id}}</td>
+                                    <td>{{$status->Name}}</td>
+                                    <td>{{$status->issue_count}} issues</td>
+                                    <td><a href="/admin/category/status/{{$status->id}}" onclick="event.preventDefault(); document.getElementById('form-{{$status->id}}').submit();" class="uk-link-reset"><i class="ri-delete-bin-2-line text-danger"></i></a></td>
+                                </tr>
+                                <form method="POST" action="/admin/category/status/{{$status->id}}" style="display: none" id="form-{{$status->id}}">
+                                    @csrf
+                                    @method('delete')
+                                </form>
+                            @empty
+                                <tr>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            @endforelse
                             <tr>
-                                <td>{{$status->id}}</td>
-                                <td>{{$status->Name}}</td>
-                                <td>{{$status->issue_count}} issues</td>
-                                <td><a href="/admin/category/status/{{$status->id}}" onclick="event.preventDefault(); document.getElementById('form-{{$status->id}}').submit();" class="uk-link-reset"><i class="ri-delete-bin-2-line text-danger"></i></a></td>
+                                <td>NEW</td>
+                                <td>Add new status</td>
+                                <td>-</td>
+                                <td><a href="/{{ request()->route()->uri }}/create" class="uk-link-reset"><i class="ri-add-circle-line uk-text-success"></i></a></td>
                             </tr>
-                            <form method="POST" action="/admin/category/status/{{$status->id}}" style="display: none" id="form-{{$status->id}}">
-                                @csrf
-                                @method('delete')
-                            </form>
-                        @empty
-                            <tr>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                        @endforelse
                         </tbody>
                     </table>
                 </div>
