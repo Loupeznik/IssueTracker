@@ -1,4 +1,7 @@
 # Issue Tracker
+
+**NO LONGER IN DEVELOPMENT**
+
 Issue tracker application made with Laravel
 
 
@@ -14,11 +17,6 @@ Issue tracker application made with Laravel
 - Custom styled UI
 - User login
 - Administration
-
-## Links
-[Live version](https://issuetracker.dzarsky.eu)<br>
-Demo version is pending<br>
-Documentation is pending
 
 ## License
 [![Licence](https://img.shields.io/github/license/Loupeznik/IssueTracker?style=for-the-badge)](https://github.com/Loupeznik/IssueTracker/blob/master/LICENSE)
